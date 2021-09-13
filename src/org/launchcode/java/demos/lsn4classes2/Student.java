@@ -30,15 +30,38 @@ public class Student {
 
 
      //TODO: Uncomment and complete the getGradeLevel method here:
-//    public String getGradeLevel() {
-//        // Determine the grade level of the student based on numberOfCredits
-//    }
+ public String getGradeLevel() {
+        if(numberOfCredits>0 &&numberOfCredits<=29)
+        {
+            return  "Freshman";
+        } else if(numberOfCredits >29 && numberOfCredits<=59){
+            return "Sophomore";
+        } else if(numberOfCredits >59 && numberOfCredits<=89){
+            return "Junior";
+        }
+        else {
+            return "Senior";
+        }
+        // Determine the grade level of the student based on numberOfCredits
+    }
 
     // TODO: Complete the addGrade method.
     public void addGrade(int courseCredits, double grade) {
-        // Update the appropriate fields: numberOfCredits, gpa
+        double gradeAdded = courseCredits*grade;
+        double qualityScore= this.gpa*this.numberOfCredits;
+        double totalQualityScore=qualityScore+(courseCredits*grade);
+        double totalnumberOfCredits=this.numberOfCredits+courseCredits;
+        this.gpa=totalQualityScore/totalnumberOfCredits;
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", studentId=" + studentId +
+                ", gpa=" + gpa +
+                '}';
+    }
     // TODO: Add your custom 'toString' method here. Make sure it returns a well-formatted String rather
     //  than just the class fields.
 
@@ -81,9 +104,11 @@ public class Student {
         Student sally = new Student("Sally",1,1,4.0);
         System.out.println("The Student class works! " + sally.getName() + " is a student!");
         System.out.println(sally);
-        sally.addGrade(12, 3.5);
-        System.out.println(sally);
-        sally.addGrade(25, 3.8);
-        System.out.println(sally);
+        Course java=new Course("web");
+        System.out.println(java);
+        //sally.addGrade(12, 3.5);
+        //System.out.println(sally);
+        //sally.addGrade(25, 3.8);
+       // System.out.println(sally);
     }
 }
